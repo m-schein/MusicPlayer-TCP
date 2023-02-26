@@ -1,19 +1,26 @@
 import enums.SoundCommands;
-
+import org.jfugue.pattern.Pattern;
 public class SoundControl {
 
     private int volume;
     private int BPM;
-    private String instrument;
     private char musicalNote;
+    public Pattern vocals;
     public SoundCommands specialCommand;
 
-    public SoundControl(int volume, int BPM, String instrument, char musicalNote, SoundCommands specialCommand) {
+    public SoundControl(int volume, int BPM, char musicalNote, SoundCommands specialCommand, Pattern vocals) {
         this.volume = volume;
         this.BPM = BPM;
-        this.instrument = instrument;
         this.musicalNote = musicalNote;
         this.specialCommand = specialCommand;
+        this.vocals = vocals;
+        this.vocals.setInstrument(specialCommand.name()); //set default instrument (AGOGO)
+    }
+    public Pattern getVocals(){
+        return this.vocals;
+    }
+    public void setVocals(Pattern vocals){
+        this.vocals = vocals;
     }
 
     public int getVolume(){
@@ -30,11 +37,11 @@ public class SoundControl {
         this.BPM = BPM;
     }
 
-    public String getInstrument(){
-        return this.instrument;
+    public Pattern getInstrument(){
+        return this.vocals.getPattern();
     }
     public void setInstrument(String instrument){
-        this.instrument = instrument;
+        this.vocals = vocals.setInstrument(instrument);
     }
 
     public char getMusicalNote(){

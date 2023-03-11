@@ -1,22 +1,32 @@
 package enums;
 
 public enum SoundCommands {
-        AGOGO(1,"(\\!)"), //changes the instrument to general instrument that is AGOGO
-        HARPSICHORD(1,"[OoIiUu]"),
-//        REPEAT_NOTE('')
+    // TODO: mudar para SoundCommand
+    // TODO: PLANT UML para fazer diagrama UML
+        AGOGO(CommandType.CHANGE_INSTRUMENT,"(\\!)"), //changes the instrument to general instrument that is AGOGO
+        HARPSICHORD(CommandType.CHANGE_INSTRUMENT,"[OoIiUu]"),
+//
 
-        TUBULAR_BELLS(1,"($)|(\n)"),
-        PAN_FLUTE(1,"(\\;)"),
-        CHURCH_ORGAN(1,"(\\,)"),
-        CHANGE_INSTRUMENT(2,"([0-9])"),
-        INC_OCTAVE(3,"(\\?)|(\\.)");
+        TUBULAR_BELLS(CommandType.CHANGE_INSTRUMENT,"($)|(\n)"),
+        PAN_FLUTE(CommandType.CHANGE_INSTRUMENT,"(\\;)"),
+        CHURCH_ORGAN(CommandType.CHANGE_INSTRUMENT,"(\\,)"),
+        CHANGE_INSTRUMENT(CommandType.CHANGE_INSTRUMENT2,"([0-9])"),
+        INC_OCTAVE(CommandType.INC_OCTAVE,"(\\?)|(\\.)"),
+
+        REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG\\n\\s]"),
+        LA(CommandType.MUSICAL_NOTE, "(A)"),
+        SI(CommandType.MUSICAL_NOTE, "(B)"),
+        DO(CommandType.MUSICAL_NOTE, "(C)"),
+        RE(CommandType.MUSICAL_NOTE, "(D)"),
+        MI(CommandType.MUSICAL_NOTE, "(E)"),
+        FA(CommandType.MUSICAL_NOTE, "(F)"),
+        SOL(CommandType.MUSICAL_NOTE, "(G)");
+//        DOUBLE_VOLUME(CommandType.MUSICAL_NOTE, "( )"),
+//        REPEAT_NOTE(CommandType.MUSICAL_NOTE, "[abcdefg]");
 
         private final String value;
-        private final int commandType;
-
-        //TODO: change commandType to string and define different
-        // categories of commands, instead of using numbers
-        SoundCommands( int commandType, String value){
+        private final CommandType commandType;
+        SoundCommands( CommandType commandType, String value){
             this.value = value;
             this.commandType = commandType;
         }
@@ -24,7 +34,7 @@ public enum SoundCommands {
         public String getValue(){
             return this.value;
         }
-        public int getCommandType(){return this.commandType;}
+        public CommandType getCommandType(){return this.commandType;}
 
     }
 

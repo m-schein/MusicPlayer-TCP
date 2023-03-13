@@ -4,19 +4,21 @@ public class SoundControl {
 
     private int volume;
     private int BPM;
-    private char musicalNote;
+    private String musicalNote;
     public Pattern vocals;
-    public SoundCommands specialCommand;
+    public SoundCommands soundCommand;
+    public String previousNote;
 
-    public SoundControl(int volume, int BPM, char musicalNote, SoundCommands specialCommand, Pattern vocals) {
+    public SoundControl(int volume, int BPM, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote) {
         this.volume = volume;
         this.BPM = BPM;
         this.musicalNote = musicalNote;
-        this.specialCommand = specialCommand;
+        this.soundCommand = soundCommand;
         this.vocals = vocals;
-        this.vocals.setInstrument(specialCommand.name()); //set default instrument (AGOGO)
+        this.vocals.setInstrument(soundCommand.name()); //set default instrument (AGOGO)
+        this.previousNote = previousNote;
     }
-    public Pattern getVocals(){
+    public void getVocals(){
         return this.vocals;
     }
     public void setVocals(Pattern vocals){
@@ -44,17 +46,23 @@ public class SoundControl {
         this.vocals = vocals.setInstrument(instrument);
     }
 
-    public char getMusicalNote(){
+    public String getMusicalNote(){
         return this.musicalNote;
     }
-    public void setMusicalNote(char musicalNote){
+    public void setMusicalNote(String musicalNote){
+        this.musicalNote = musicalNote;
+    }
+    public String getPreviousMusicalNote(){
+        return this.musicalNote;
+    }
+    public void setPreviousMusicalNote(String musicalNote){
         this.musicalNote = musicalNote;
     }
 
-    public SoundCommands getSpecialCommand() {
-        return specialCommand;
+    public SoundCommands getSoundCommand() {
+        return soundCommand;
     }
-    public void setSpecialCommand(SoundCommands newspecialCommands) {
-        this.specialCommand = newspecialCommands;
+    public void setSoundCommand(SoundCommands soundCommand) {
+        this.soundCommand = soundCommand;
     }
 }

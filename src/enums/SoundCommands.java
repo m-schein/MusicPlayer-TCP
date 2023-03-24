@@ -14,7 +14,7 @@ public enum SoundCommands {
         INC_OCTAVE(CommandType.INC_OCTAVE,"(\\?)|(\\.)"),
         DOUBLE_VOLUME(CommandType.DOUBLE_VOLUME, "(\\ )"),
 
-        REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG\\n\\s]"),
+        REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG0-9\\n\\s]"),
         LA(CommandType.MUSICAL_NOTE, "(A)"),
         SI(CommandType.MUSICAL_NOTE, "(B)"),
         DO(CommandType.MUSICAL_NOTE, "(C)"),

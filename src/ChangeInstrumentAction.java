@@ -2,7 +2,7 @@ import enums.SoundCommands;
 
 public class ChangeInstrumentAction implements  CommandAction{
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
         soundControl.setSoundCommand(command);
         soundControl.setInstrument(command.name());
     }

@@ -3,7 +3,7 @@ import enums.SoundCommands;
 
 public class RepeatNoteAction implements CommandAction {
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
         String previousNote = soundControl.getPreviousMusicalNote();
         if(previousNote.matches("[ABCDEFG]")){
             soundControl.getVocals().add(previousNote);

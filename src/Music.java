@@ -8,7 +8,7 @@ public class Music {
         //o q nao da pra testar deixar no main
 
         SoundPlayer player = new SoundPlayer();
-        SoundControl control = new SoundControl(50, 100, "A", SoundCommands.AGOGO, player.getVocals(), "R");
+        SoundControl control = new SoundControl(50, 100, 3, "A", SoundCommands.AGOGO, player.getVocals(), "R");
         CommandActionFactory actionFactory = new CommandActionFactory();
         
         System.out.println("Write the desired SoundCommands and hit enter to check instrument sound changing");

@@ -12,6 +12,7 @@ public enum SoundCommands {
         CHURCH_ORGAN(CommandType.CHANGE_INSTRUMENT,"(\\,)"),
         CHANGE_INSTRUMENT(CommandType.CHANGE_INSTRUMENT2,"([0-9])"),
         INC_OCTAVE(CommandType.INC_OCTAVE,"(\\?)|(\\.)"),
+        DOUBLE_VOLUME(CommandType.DOUBLE_VOLUME, "(\\ )"),
 
         REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG\\n\\s]"),
         LA(CommandType.MUSICAL_NOTE, "(A)"),

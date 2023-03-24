@@ -12,6 +12,12 @@ public class CommandActionFactory {
             if(CommandType.REPEAT.equals(type)){
                 return new RepeatNoteAction();
             }
+            if(CommandType.INC_OCTAVE.equals(type)){
+                return new IncreaseOctaveAction();
+            }
+            if(CommandType.DOUBLE_VOLUME.equals(type)){
+                return new DoubleVolumeAction();
+            }
         }catch(NullPointerException e){
             System.out.println("input error"+e.getMessage());
         }

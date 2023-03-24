@@ -4,21 +4,23 @@ public class SoundControl {
 
     private int volume;
     private int BPM;
+    private int octave;
     private String musicalNote;
     public Pattern vocals;
     public SoundCommands soundCommand;
     public String previousNote;
 
-    public SoundControl(int volume, int BPM, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote) {
+    public SoundControl(int volume, int BPM, int octave, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote) {
         this.volume = volume;
         this.BPM = BPM;
+        this.octave = octave;
         this.musicalNote = musicalNote;
         this.soundCommand = soundCommand;
         this.vocals = vocals;
         this.vocals.setInstrument(soundCommand.name()); //set default instrument (AGOGO)
         this.previousNote = previousNote;
     }
-    public void getVocals(){
+    public Pattern getVocals(){
         return this.vocals;
     }
     public void setVocals(Pattern vocals){
@@ -38,6 +40,9 @@ public class SoundControl {
     public void setBPM(int BPM){
         this.BPM = BPM;
     }
+
+    public int getOctave() { return this.octave; }
+    public void setOctave(int octave) { this.octave = octave; }
 
     public Pattern getInstrument(){
         return this.vocals.getPattern();

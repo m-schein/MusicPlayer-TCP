@@ -17,7 +17,7 @@ public class TextFieldInput extends JTextArea {
     CommandActionFactory actionFactory = new CommandActionFactory();
     CommandReader commandReader = new CommandReader(control, actionFactory);
     Font font = new Font("Arial", Font.PLAIN, 20);
-    String content;
+    String textFieldContent;
     public TextFieldInput() {
         setLineWrap(true);
         setWrapStyleWord(true);
@@ -26,22 +26,21 @@ public class TextFieldInput extends JTextArea {
         setBackground(Color.decode("#f2f5fc"));
         setFont(font);
     }
-    private void setContent(final String texto) {
-        this.content = texto;
+    private void setContent(final String text) {
+        this.textFieldContent = text;
     }
-    public void playAction(final Button botao) {
+    public void playMusicAction(final Button botao) {
         botao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
                 setContent(getText());
-                test(content, content.length());
+                convertTextIntoCommands(textFieldContent, textFieldContent.length());
             }
         });
     }
 
-    public void test(String inputText, Integer inputSize){
+    public void convertTextIntoCommands(String inputText, Integer inputSize){
         boolean keepReadingCommands = true;
-
         while (keepReadingCommands) {
             for(final char c : inputText.toCharArray()) {
                 if (inputSize == 0) {

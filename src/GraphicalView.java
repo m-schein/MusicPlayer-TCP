@@ -34,17 +34,17 @@ public class GraphicalView extends JFrame {
         panel.add(textBox);
 
         // input text in the view
-        TextFieldInput inputTextBox = new TextFieldInput();
-        final JScrollPane scrollPane = new JScrollPane(inputTextBox);
+        TextFieldInput textFieldInput = new TextFieldInput();
+        final JScrollPane scrollPane = new JScrollPane(textFieldInput);
         scrollPane.setBounds(50, 50, 550, 400);
         panel.add(scrollPane);
-        getButtons(panel, inputTextBox);
+        getButtons(panel, textFieldInput);
         add(panel);
     }
 
-    public void getButtons(final JPanel painel,TextFieldInput inputTextBox) {
+    public void getButtons(final JPanel panel,TextFieldInput textFieldInput) {
         final Button playButton = new Button("Play music", 260, 475);
-        painel.add(playButton);
-        inputTextBox.playAction(playButton);
+        panel.add(playButton);
+        textFieldInput.playMusicAction(playButton);
     }
 }

@@ -4,10 +4,4 @@ public class Music {
         final GraphicalView graphicalWindow = new GraphicalView();
         graphicalWindow.setVisible(true);
     }
-
-
-
-
-
-
 }

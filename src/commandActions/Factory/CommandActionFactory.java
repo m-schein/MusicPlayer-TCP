@@ -7,9 +7,6 @@ import enums.CommandType;
 public class CommandActionFactory {
     public CommandAction make(CommandType type){
         try {
-            if(CommandType.END_OF_MUSIC.equals(type)) {
-                return new FinalizeMusicAction();
-            }
             if (CommandType.CHANGE_INSTRUMENT.equals(type)) {
                 return new ChangeInstrumentAction();
             }

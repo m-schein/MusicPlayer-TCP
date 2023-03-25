@@ -1,7 +1,6 @@
 package enums;
 
-public enum SoundCommands {
-    // TODO: mudar para SoundCommand
+public enum SoundCommand {
         AGOGO(CommandType.CHANGE_INSTRUMENT,"(\\!)"), //changes the instrument to general instrument that is AGOGO
         HARPSICHORD(CommandType.CHANGE_INSTRUMENT,"[OoIiUu]"),
         TUBULAR_BELLS(CommandType.CHANGE_INSTRUMENT,"($)|(\n)"),
@@ -11,20 +10,18 @@ public enum SoundCommands {
         INC_OCTAVE(CommandType.INC_OCTAVE,"(\\?)|(\\.)"),
         DOUBLE_VOLUME(CommandType.DOUBLE_VOLUME, "(\\s)"),
 
-        REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG0-9\\n\\sx]"),
+        REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG0-9\\n\\s;.,$OoIiUu!]"),
         LA(CommandType.MUSICAL_NOTE, "(A)"),
         SI(CommandType.MUSICAL_NOTE, "(B)"),
         DO(CommandType.MUSICAL_NOTE, "(C)"),
         RE(CommandType.MUSICAL_NOTE, "(D)"),
         MI(CommandType.MUSICAL_NOTE, "(E)"),
         FA(CommandType.MUSICAL_NOTE, "(F)"),
-        SOL(CommandType.MUSICAL_NOTE, "(G)"),
-
-        END_MUSIC(CommandType.END_OF_MUSIC, "(x)");
+        SOL(CommandType.MUSICAL_NOTE, "(G)");
 
         private final String value;
         private final CommandType commandType;
-        SoundCommands( CommandType commandType, String value){
+        SoundCommand( CommandType commandType, String value){
             this.value = value;
             this.commandType = commandType;
         }

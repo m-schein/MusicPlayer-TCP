@@ -2,11 +2,11 @@ package commandActions;
 
 import commandActions.Interface.CommandAction;
 import commandActions.SoundControl.SoundControl;
-import enums.SoundCommands;
+import enums.SoundCommand;
 
 public class RepeatNoteAction implements CommandAction {
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommand command, String input) {
         String previousNote = soundControl.getPreviousMusicalNote();
         if(previousNote.matches("[ABCDEFG]")){
             soundControl.getVocals().add(previousNote);

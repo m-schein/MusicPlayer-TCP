@@ -1,6 +1,6 @@
 package commandActions.SoundControl;
 
-import enums.SoundCommands;
+import enums.SoundCommand;
 import org.jfugue.pattern.Pattern;
 import java.util.ArrayList;
 public class SoundControl {
@@ -10,11 +10,11 @@ public class SoundControl {
     private int octave;
     private String musicalNote;
     public Pattern vocals;
-    public SoundCommands soundCommand;
+    public SoundCommand soundCommand;
     public String previousNote;
     public ArrayList<Pattern> musicComposition;
 
-    public SoundControl(int volume, int BPM, int octave, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
+    public SoundControl(int volume, int BPM, int octave, String musicalNote, SoundCommand soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
         this.volume = volume;
         this.BPM = BPM;
         this.octave = octave;
@@ -26,17 +26,6 @@ public class SoundControl {
         this.musicComposition = musicComposition;
     }
 
-    public void resetCommands(){
-        this.volume = 50;
-        this.BPM = 100;
-        this.octave = 3;
-        this.musicalNote = "";
-        this.soundCommand = SoundCommands.AGOGO;
-        this.vocals.setInstrument(soundCommand.name()); //set default instrument (AGOGO)
-        this.previousNote = "R";
-        this.musicComposition = new ArrayList<Pattern>();
-
-    }
     public Pattern getVocals(){
         return this.vocals;
     }
@@ -94,13 +83,21 @@ public class SoundControl {
     public ArrayList<Pattern> getMusicComposition(){
         return this.musicComposition;
     }
+    public void resetMusicComposition(){
+        this.musicComposition = new ArrayList<Pattern>();
+    }
+    public void resetVocals(){
+        Pattern vocals = new Pattern();
+        vocals.setInstrument(String.valueOf(SoundCommand.AGOGO));
+        this.vocals = vocals;
+    }
     public void setMusicComposition(Pattern vocals){
         this.musicComposition.add(vocals);
     }
-    public SoundCommands getSoundCommand() {
+    public SoundCommand getSoundCommand() {
         return soundCommand;
     }
-    public void setSoundCommand(SoundCommands soundCommand) {
+    public void setSoundCommand(SoundCommand soundCommand) {
         this.soundCommand = soundCommand;
     }
 }

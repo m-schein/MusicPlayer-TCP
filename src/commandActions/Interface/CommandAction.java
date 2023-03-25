@@ -1,10 +1,10 @@
 package commandActions.Interface;
 
 import commandActions.SoundControl.SoundControl;
-import enums.SoundCommands;
+import enums.SoundCommand;
 
 public interface CommandAction {
     //comando comum em todas as açoes passa no execute
     //parametros para açoes especificas passa no construtor da factory
-    void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input);
+    void executeSoundCommand(SoundControl soundControl, SoundCommand command, String input);
 }

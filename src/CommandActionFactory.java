@@ -12,6 +12,9 @@ public class CommandActionFactory {
             if(CommandType.REPEAT.equals(type)){
                 return new RepeatNoteAction();
             }
+            if(CommandType.END_OF_MUSIC.equals(type)){
+                return new FinalizeMusicAction();
+            }
         }catch(NullPointerException e){
             System.out.println("input error"+e.getMessage());
         }

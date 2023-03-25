@@ -1,31 +1,35 @@
 import enums.SoundCommands;
-import org.jfugue.player.Player;
-import java.util.Scanner;
 import org.jfugue.pattern.Pattern;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Music {
     public static void main(String[] args) {
-        ///classe programa para instanciar todas as classes necessárias no main
-        //o q nao da pra testar deixar no main
-
         SoundPlayer player = new SoundPlayer();
-        SoundControl control = new SoundControl(50, 100, "A", SoundCommands.AGOGO, player.getVocals(), "R");
+        ArrayList<Pattern> MusicComposition = new ArrayList<Pattern>();
+        SoundControl control = new SoundControl(50, 100, "A", SoundCommands.AGOGO, player.getVocals(), "R", MusicComposition);
         CommandActionFactory actionFactory = new CommandActionFactory();
-        
+        CommandReader commandReader = new CommandReader(control, actionFactory);
+
         System.out.println("Write the desired SoundCommands and hit enter to check instrument sound changing");
         Scanner userInput = new Scanner(System.in);
-        String inputText = userInput.nextLine();
-        boolean keepAddingCommands = true;
-        while (keepAddingCommands) {
-            if (inputText.equals("x")) {
-                keepAddingCommands = false;
-                break;
-            } else {
-                System.out.println("write next command:");
-                new CommandReader(control, actionFactory).readCommand(inputText);
-                inputText = userInput.nextLine();
+        boolean keepReadingCommands = true;
+
+        while (keepReadingCommands) {
+            String inputText = userInput.nextLine();
+            for(final char c : inputText.toCharArray()) {
+                if (c == 'x') {
+                    commandReader.readCommand(String.valueOf(c));
+                    keepReadingCommands = false;
+                    break;
+                } else {
+                    commandReader.readCommand(String.valueOf(c));
+                }
             }
         }
-        player.getPlayer().play(player.getVocals());
+        control.getMusicComposition().forEach(musicSnippet -> player.getPlayer().play(musicSnippet));
     }
 
 }

@@ -1,5 +1,6 @@
 import enums.SoundCommands;
 import org.jfugue.pattern.Pattern;
+import java.util.ArrayList;
 public class SoundControl {
 
     private int volume;
@@ -8,8 +9,9 @@ public class SoundControl {
     public Pattern vocals;
     public SoundCommands soundCommand;
     public String previousNote;
+    public ArrayList<Pattern> musicComposition;
 
-    public SoundControl(int volume, int BPM, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote) {
+    public SoundControl(int volume, int BPM, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
         this.volume = volume;
         this.BPM = BPM;
         this.musicalNote = musicalNote;
@@ -17,8 +19,9 @@ public class SoundControl {
         this.vocals = vocals;
         this.vocals.setInstrument(soundCommand.name()); //set default instrument (AGOGO)
         this.previousNote = previousNote;
+        this.musicComposition = musicComposition;
     }
-    public void getVocals(){
+    public Pattern getVocals(){
         return this.vocals;
     }
     public void setVocals(Pattern vocals){
@@ -43,6 +46,10 @@ public class SoundControl {
         return this.vocals.getPattern();
     }
     public void setInstrument(String instrument){
+        this.musicComposition.add(this.vocals);
+        Pattern vocals = new Pattern();
+        this.vocals = vocals;
+        this.vocals.add("I["+instrument+"]");
         this.vocals = vocals.setInstrument(instrument);
     }
 
@@ -59,6 +66,12 @@ public class SoundControl {
         this.musicalNote = musicalNote;
     }
 
+    public ArrayList<Pattern> getMusicComposition(){
+        return this.musicComposition;
+    }
+    public void setMusicComposition(Pattern vocals){
+        this.musicComposition.add(vocals);
+    }
     public SoundCommands getSoundCommand() {
         return soundCommand;
     }

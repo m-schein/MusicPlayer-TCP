@@ -1,8 +1,15 @@
+package commandActions.Factory;
+
+import commandActions.*;
+import commandActions.Interface.CommandAction;
 import enums.CommandType;
 
 public class CommandActionFactory {
     public CommandAction make(CommandType type){
         try {
+            if(CommandType.END_OF_MUSIC.equals(type)) {
+                return new FinalizeMusicAction();
+            }
             if (CommandType.CHANGE_INSTRUMENT.equals(type)) {
                 return new ChangeInstrumentAction();
             }
@@ -18,12 +25,10 @@ public class CommandActionFactory {
             if(CommandType.DOUBLE_VOLUME.equals(type)){
                 return new DoubleVolumeAction();
             }
-            if(CommandType.CHANGE_INSTRUMENT2.equals(type)){
-                return new ChangeInstrumentFromIntAction();
-            }
+
         }catch(NullPointerException e){
             System.out.println("input error"+e.getMessage());
         }
         return null;
-    }
+    };
 }

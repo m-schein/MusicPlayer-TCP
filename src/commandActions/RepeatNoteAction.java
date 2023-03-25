@@ -1,4 +1,7 @@
-import enums.CommandType;
+package commandActions;
+
+import commandActions.Interface.CommandAction;
+import commandActions.SoundControl.SoundControl;
 import enums.SoundCommands;
 
 public class RepeatNoteAction implements CommandAction {

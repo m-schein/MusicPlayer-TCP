@@ -1,3 +1,6 @@
+package commandActions.Interface;
+
+import commandActions.SoundControl.SoundControl;
 import enums.SoundCommands;
 
 public interface CommandAction {

@@ -1,7 +1,8 @@
+import commandActions.Factory.CommandActionFactory;
+import commandActions.SoundControl.SoundControl;
 import enums.SoundCommands;
 import org.jfugue.pattern.Pattern;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 

@@ -1,3 +1,5 @@
+package commandActions.SoundControl;
+
 import enums.SoundCommands;
 import org.jfugue.pattern.Pattern;
 import java.util.ArrayList;

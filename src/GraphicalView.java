@@ -1,13 +1,13 @@
-package graphicalView;
-
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import graphicalView.Components.Buttons;
+import graphicalView.Components.Button;
+
 
 import javax.swing.*;
 
@@ -24,21 +24,12 @@ public class GraphicalView extends JFrame {
 
         initializePanels();
     }
-    private void initializePanels() {
+    public void initializePanels() {
 
         final JPanel panel1 = new JPanel(null);
         panel1.setBackground(Color.decode("#8473c9"));
 
-//        JPanel panel = new JPanel();
-//        JLabel label = new JLabel("Trying to add plain text");
-//        label.setBounds(700, 50, 150, 25);
-//        label.setFont(new Font("Serif", Font.BOLD, 7));
-//        panel.setComponentZOrder(label, 1);
-//        label.setForeground(Color.RED);
-//        panel.add(label);
-
-
-        JTextField textBox = new JTextField("Test");
+        JTextArea textBox = new JTextArea();
         textBox.setBounds(700, 50, 150, 25);
         panel1.add(textBox);
 
@@ -50,31 +41,30 @@ public class GraphicalView extends JFrame {
         instrumentos.setBounds(650, 150, 280, 50);
         panel1.add(instrumentos);
 
-        JTextArea textArea = new JTextArea();
-//        scrollPane.setViewportView(textArea);
-        final JScrollPane scrollPane = new JScrollPane(textArea);
+        // input text in the view
+        TextConversor inputTextBox = new TextConversor();
+        final JScrollPane scrollPane = new JScrollPane(inputTextBox);
         scrollPane.setBounds(50, 50, 550, 400);
         panel1.add(scrollPane);
-
-        getButtons(panel1, "texto");
+        getButtons(panel1, inputTextBox);
         add(panel1);
 
     }
 
-    private void getButtons(final JPanel painel, final String texto) {
-        final Buttons playButton = new Buttons("Play", 185, 475);
-//        texto.playAction(playButton);
+    public void getButtons(final JPanel painel, TextConversor inputTextBox) {
+        final Button playButton = new Button("Play", 185, 475);
         painel.add(playButton);
+        inputTextBox.playAction(playButton);
 
-        final Buttons stopButton = new Buttons("Stop", 335, 475);
+        final Button stopButton = new Button("Stop", 335, 475);
 //        texto.stopAction(stopButton);
         painel.add(stopButton);
 
-        final Buttons importButton = new Buttons("Import", 650, 250);
+        final Button importButton = new Button("Import", 650, 250);
 //        texto.importAction(importButton);
         painel.add(importButton);
 
-        final Buttons exportButton = new Buttons("Export", 800, 250);
+        final Button exportButton = new Button("Export", 800, 250);
 //        texto.exportAction(exportButton);
         painel.add(exportButton);
 

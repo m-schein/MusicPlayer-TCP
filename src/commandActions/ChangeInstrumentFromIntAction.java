@@ -21,7 +21,7 @@ public class ChangeInstrumentFromIntAction implements CommandAction {
         int currentInstrument = channel.getProgram();
         int newInstrument = currentInstrument + increment;
 
-        soundControl.setInstrument(newInstrument);
+        soundControl.setInstrumentByMIDINumber(newInstrument);
 
     }
 }

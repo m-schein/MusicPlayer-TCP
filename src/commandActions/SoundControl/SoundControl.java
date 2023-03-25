@@ -25,6 +25,18 @@ public class SoundControl {
         this.previousNote = previousNote;
         this.musicComposition = musicComposition;
     }
+
+    public void resetCommands(){
+        this.volume = 50;
+        this.BPM = 100;
+        this.octave = 3;
+        this.musicalNote = "";
+        this.soundCommand = SoundCommands.AGOGO;
+        this.vocals.setInstrument(soundCommand.name()); //set default instrument (AGOGO)
+        this.previousNote = "R";
+        this.musicComposition = new ArrayList<Pattern>();
+
+    }
     public Pattern getVocals(){
         return this.vocals;
     }
@@ -52,14 +64,14 @@ public class SoundControl {
     public Pattern getInstrument(){
         return this.vocals.getPattern();
     }
-    public void setInstrument(String instrument){
+    public void setInstrumentByName(String instrument){
         this.musicComposition.add(this.vocals);
         Pattern vocals = new Pattern();
         this.vocals = vocals;
         this.vocals = vocals.setInstrument(instrument);
     }
 
-    public void setInstrument(int instrument){
+    public void setInstrumentByMIDINumber(int instrument){
         this.musicComposition.add(this.vocals);
         Pattern vocals = new Pattern();
         this.vocals = vocals;

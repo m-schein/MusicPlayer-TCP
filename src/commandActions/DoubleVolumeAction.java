@@ -9,7 +9,7 @@ public class DoubleVolumeAction implements CommandAction {
     static final int MAX_VOLUME = 75;
 
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
         int curVolume = soundControl.getVolume();
         int newVolume;
         if(curVolume < MAX_VOLUME) {

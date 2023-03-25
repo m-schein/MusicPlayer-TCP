@@ -14,7 +14,7 @@ public class CommandReader {
         for (SoundCommands command : SoundCommands.values()) {
             if(inputText.matches(command.getValue())){
                 final CommandAction action = actionFactory.make(command.getCommandType());
-                action.executeSoundCommand(soundControl,command);
+                action.executeSoundCommand(soundControl,command,inputText);
             }
         }
     }

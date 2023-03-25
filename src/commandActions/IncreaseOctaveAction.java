@@ -8,7 +8,7 @@ public class IncreaseOctaveAction implements CommandAction {
     static final int DEFAULT_OCTAVE = 3;
     static final int MAX_OCTAVE = 9;
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
         int curOctave = soundControl.getOctave();
         int newOctave;
         if(curOctave < MAX_OCTAVE) {

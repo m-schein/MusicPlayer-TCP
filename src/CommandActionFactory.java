@@ -25,5 +25,5 @@ public class CommandActionFactory {
             System.out.println("input error"+e.getMessage());
         }
         return null;
-    };
+    }
 }

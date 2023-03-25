@@ -9,6 +9,7 @@ public enum SoundCommands {
         CHURCH_ORGAN(CommandType.CHANGE_INSTRUMENT,"(,)"),
         CHANGE_INSTRUMENT(CommandType.CHANGE_INSTRUMENT2,"([0-9])"),
         INC_OCTAVE(CommandType.INC_OCTAVE,"(\\?)|(\\.)"),
+        DOUBLE_VOLUME(CommandType.DOUBLE_VOLUME, "(\\s)"),
 
         REPEAT_NOTE(CommandType.REPEAT, "[^ABCDEFG0-9\\n\\sx]"),
         LA(CommandType.MUSICAL_NOTE, "(A)"),
@@ -20,9 +21,6 @@ public enum SoundCommands {
         SOL(CommandType.MUSICAL_NOTE, "(G)"),
 
         END_MUSIC(CommandType.END_OF_MUSIC, "(x)");
-
-//        DOUBLE_VOLUME(CommandType.MUSICAL_NOTE, "( )"),
-//        REPEAT_NOTE(CommandType.MUSICAL_NOTE, "[abcdefg]");
 
         private final String value;
         private final CommandType commandType;

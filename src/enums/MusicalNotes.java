@@ -10,7 +10,7 @@ public enum MusicalNotes {
     MI("(E)"),
     FA("(F)"),
     SOL("(G)"),
-    DOUBLE_VOLUME("( )"),
+//    DOUBLE_VOLUME("( )"),
     REPEAT_NOTE("[abcdefg]");
 
     private final String value;

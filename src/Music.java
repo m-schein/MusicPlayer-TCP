@@ -9,7 +9,7 @@ public class Music {
     public static void main(String[] args) {
         SoundPlayer player = new SoundPlayer();
         ArrayList<Pattern> MusicComposition = new ArrayList<Pattern>();
-        SoundControl control = new SoundControl(50, 100, "A", SoundCommands.AGOGO, player.getVocals(), "R", MusicComposition);
+        SoundControl control = new SoundControl(50, 100, 3,"A", SoundCommands.AGOGO, player.getVocals(), "R", MusicComposition);
         CommandActionFactory actionFactory = new CommandActionFactory();
         CommandReader commandReader = new CommandReader(control, actionFactory);
 
@@ -29,7 +29,7 @@ public class Music {
                 }
             }
         }
-        control.getMusicComposition().forEach(musicSnippet -> player.getPlayer().play(musicSnippet));
+        control.getMusicComposition().forEach(musicSnippet -> { player.getPlayer().play(musicSnippet); System.out.println(musicSnippet);});
     }
 
 }

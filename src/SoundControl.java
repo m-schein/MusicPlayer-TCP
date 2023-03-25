@@ -5,15 +5,17 @@ public class SoundControl {
 
     private int volume;
     private int BPM;
+    private int octave;
     private String musicalNote;
     public Pattern vocals;
     public SoundCommands soundCommand;
     public String previousNote;
     public ArrayList<Pattern> musicComposition;
 
-    public SoundControl(int volume, int BPM, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
+    public SoundControl(int volume, int BPM, int octave, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
         this.volume = volume;
         this.BPM = BPM;
+        this.octave = octave;
         this.musicalNote = musicalNote;
         this.soundCommand = soundCommand;
         this.vocals = vocals;
@@ -42,6 +44,9 @@ public class SoundControl {
         this.BPM = BPM;
     }
 
+    public int getOctave() { return this.octave; }
+    public void setOctave(int octave) { this.octave = octave; }
+
     public Pattern getInstrument(){
         return this.vocals.getPattern();
     }
@@ -49,7 +54,6 @@ public class SoundControl {
         this.musicComposition.add(this.vocals);
         Pattern vocals = new Pattern();
         this.vocals = vocals;
-        this.vocals.add("I["+instrument+"]");
         this.vocals = vocals.setInstrument(instrument);
     }
 

@@ -1,6 +1,7 @@
 import commandActions.Factory.CommandActionFactory;
 import commandActions.SoundControl.SoundControl;
 import enums.SoundCommands;
+import graphicalView.GraphicalView;
 import org.jfugue.pattern.Pattern;
 
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ public class Music {
         SoundControl control = new SoundControl(50, 100, 3,"A", SoundCommands.AGOGO, player.getVocals(), "R", MusicComposition);
         CommandActionFactory actionFactory = new CommandActionFactory();
         CommandReader commandReader = new CommandReader(control, actionFactory);
-
+        final GraphicalView programWindow = new GraphicalView();
+        programWindow.setVisible(true);
         System.out.println("Write the desired SoundCommands and hit enter to check instrument sound changing");
         Scanner userInput = new Scanner(System.in);
         boolean keepReadingCommands = true;

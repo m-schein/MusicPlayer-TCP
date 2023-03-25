@@ -20,8 +20,8 @@ public class ChangeInstrumentFromIntAction implements CommandAction {
         MidiChannel channel = synth.getChannels()[0];
         int currentInstrument = channel.getProgram();
         int newInstrument = currentInstrument + increment;
-        //channel.programChange(newInstrument);
-        soundControl.getVocals().setInstrument(newInstrument);
+
+        soundControl.setInstrument(newInstrument);
 
     }
 }

@@ -59,6 +59,13 @@ public class SoundControl {
         this.vocals = vocals.setInstrument(instrument);
     }
 
+    public void setInstrument(int instrument){
+        this.musicComposition.add(this.vocals);
+        Pattern vocals = new Pattern();
+        this.vocals = vocals;
+        this.vocals = vocals.setInstrument(instrument);
+    }
+
     public String getMusicalNote(){
         return this.musicalNote;
     }

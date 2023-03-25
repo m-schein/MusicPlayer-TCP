@@ -25,6 +25,9 @@ public class CommandActionFactory {
             if(CommandType.DOUBLE_VOLUME.equals(type)){
                 return new DoubleVolumeAction();
             }
+            if(CommandType.CHANGE_INSTRUMENT2.equals(type)){
+                return new ChangeInstrumentFromIntAction();
+            }
 
         }catch(NullPointerException e){
             System.out.println("input error"+e.getMessage());

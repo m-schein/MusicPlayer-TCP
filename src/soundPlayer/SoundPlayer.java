@@ -1,3 +1,5 @@
+package soundPlayer;
+
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 

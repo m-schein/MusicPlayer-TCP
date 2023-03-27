@@ -2,14 +2,14 @@ package commandActions;
 
 import commandActions.Interface.CommandAction;
 import commandActions.SoundControl.SoundControl;
-import enums.SoundCommands;
+import enums.SoundCommand;
 
 public class DoubleVolumeAction implements CommandAction {
     static final int MIN_VOLUME = 15;
     static final int MAX_VOLUME = 75;
 
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommand command, String input) {
         int curVolume = soundControl.getVolume();
         int newVolume;
         if(curVolume < MAX_VOLUME) {

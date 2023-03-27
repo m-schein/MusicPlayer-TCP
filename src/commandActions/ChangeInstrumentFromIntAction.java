@@ -2,12 +2,12 @@ package commandActions;
 
 import commandActions.Interface.CommandAction;
 import commandActions.SoundControl.SoundControl;
-import enums.SoundCommands;
+import enums.SoundCommand;
 import javax.sound.midi.*;
 
 public class ChangeInstrumentFromIntAction implements CommandAction {
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommand command, String input) {
         Synthesizer synth;
         int increment = Integer.parseInt(input);
         try {
@@ -21,7 +21,7 @@ public class ChangeInstrumentFromIntAction implements CommandAction {
         int currentInstrument = channel.getProgram();
         int newInstrument = currentInstrument + increment;
 
-        soundControl.setInstrument(newInstrument);
+        soundControl.setInstrumentByMIDINumber(newInstrument);
 
     }
 }

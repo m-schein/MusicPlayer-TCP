@@ -2,13 +2,13 @@ package commandActions;
 
 import commandActions.Interface.CommandAction;
 import commandActions.SoundControl.SoundControl;
-import enums.SoundCommands;
+import enums.SoundCommand;
 
 public class IncreaseOctaveAction implements CommandAction {
     static final int DEFAULT_OCTAVE = 3;
     static final int MAX_OCTAVE = 9;
     @Override
-    public void executeSoundCommand(SoundControl soundControl, SoundCommands command, String input) {
+    public void executeSoundCommand(SoundControl soundControl, SoundCommand command, String input) {
         int curOctave = soundControl.getOctave();
         int newOctave;
         if(curOctave < MAX_OCTAVE) {

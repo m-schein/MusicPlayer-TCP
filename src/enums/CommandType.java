@@ -7,8 +7,6 @@ public enum CommandType {
     MUSICAL_NOTE,
     REPEAT,
 
-    END_OF_MUSIC,
-
     DOUBLE_VOLUME,
 
 }

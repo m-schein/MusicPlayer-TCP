@@ -1,6 +1,6 @@
 package commandActions.SoundControl;
 
-import enums.SoundCommands;
+import enums.SoundCommand;
 import org.jfugue.pattern.Pattern;
 import java.util.ArrayList;
 public class SoundControl {
@@ -10,11 +10,11 @@ public class SoundControl {
     private int octave;
     private String musicalNote;
     public Pattern vocals;
-    public SoundCommands soundCommand;
+    public SoundCommand soundCommand;
     public String previousNote;
     public ArrayList<Pattern> musicComposition;
 
-    public SoundControl(int volume, int BPM, int octave, String musicalNote, SoundCommands soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
+    public SoundControl(int volume, int BPM, int octave, String musicalNote, SoundCommand soundCommand, Pattern vocals, String previousNote, ArrayList<Pattern> musicComposition) {
         this.volume = volume;
         this.BPM = BPM;
         this.octave = octave;
@@ -25,6 +25,7 @@ public class SoundControl {
         this.previousNote = previousNote;
         this.musicComposition = musicComposition;
     }
+
     public Pattern getVocals(){
         return this.vocals;
     }
@@ -52,14 +53,14 @@ public class SoundControl {
     public Pattern getInstrument(){
         return this.vocals.getPattern();
     }
-    public void setInstrument(String instrument){
+    public void setInstrumentByName(String instrument){
         this.musicComposition.add(this.vocals);
         Pattern vocals = new Pattern();
         this.vocals = vocals;
         this.vocals = vocals.setInstrument(instrument);
     }
 
-    public void setInstrument(int instrument){
+    public void setInstrumentByMIDINumber(int instrument){
         this.musicComposition.add(this.vocals);
         Pattern vocals = new Pattern();
         this.vocals = vocals;
@@ -82,13 +83,21 @@ public class SoundControl {
     public ArrayList<Pattern> getMusicComposition(){
         return this.musicComposition;
     }
+    public void resetMusicComposition(){
+        this.musicComposition = new ArrayList<Pattern>();
+    }
+    public void resetVocals(){
+        Pattern vocals = new Pattern();
+        vocals.setInstrument(String.valueOf(SoundCommand.AGOGO));
+        this.vocals = vocals;
+    }
     public void setMusicComposition(Pattern vocals){
         this.musicComposition.add(vocals);
     }
-    public SoundCommands getSoundCommand() {
+    public SoundCommand getSoundCommand() {
         return soundCommand;
     }
-    public void setSoundCommand(SoundCommands soundCommand) {
+    public void setSoundCommand(SoundCommand soundCommand) {
         this.soundCommand = soundCommand;
     }
 }

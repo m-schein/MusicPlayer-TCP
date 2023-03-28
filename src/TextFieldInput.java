@@ -40,11 +40,12 @@ public class TextFieldInput extends JTextArea {
             public void actionPerformed(final ActionEvent e) {
                 setContent(getText());
                 convertTextIntoCommands(textFieldContent, textFieldContent.length());
+                control.getMusicComposition().forEach(musicSnippet -> { player.getPlayer().play(musicSnippet); System.out.println(musicSnippet);});
+                control.resetMusicComposition();
+                control.resetVocals();
             }
         });
     }
-
-
 
     public void convertTextIntoCommands(String inputText, Integer inputSize){
         boolean keepReadingCommands = true;
@@ -60,15 +61,14 @@ public class TextFieldInput extends JTextArea {
                 }
             }
         }
-        control.getMusicComposition().forEach(musicSnippet -> { player.getPlayer().play(musicSnippet); System.out.println(musicSnippet);});
-        control.resetMusicComposition();
-        control.resetVocals();
     }
 
     public void downloadMusicAction(final Button botao) {
         botao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
+                setContent(getText());
+                convertTextIntoCommands(textFieldContent, textFieldContent.length());
                 // abre janela para salvar arquivo e salva em .MIDI
                 final JFileChooser fileSaver = new JFileChooser();
                 final FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo .MIDI", "MIDI");
@@ -79,17 +79,17 @@ public class TextFieldInput extends JTextArea {
                 if (fileSaver.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
                     final File MIDIfile = new File(fileSaver.getSelectedFile().getAbsolutePath() + ".MIDI");
                     Pattern concatPattern = new Pattern();
-                        control.getMusicComposition().forEach(musicSnippet -> {
-                            concatPattern.add(musicSnippet);
-                        });
-                            try {
-                                MidiFileManager.savePatternToMidi(concatPattern, MIDIfile);
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-//
-
+                    control.getMusicComposition().forEach(musicSnippet -> {
+                        concatPattern.add(musicSnippet);
+                    });
+                        try {
+                            MidiFileManager.savePatternToMidi(concatPattern, MIDIfile);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                 }
+                    control.resetMusicComposition();
+                    control.resetVocals();
             }
         });
     }

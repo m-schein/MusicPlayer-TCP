@@ -43,8 +43,12 @@ public class GraphicalView extends JFrame {
     }
 
     public void getButtons(final JPanel panel,TextFieldInput textFieldInput) {
-        final Button playButton = new Button("Play music", 260, 475);
+        final Button playButton = new Button("Play music", 140, 475);
         panel.add(playButton);
         textFieldInput.playMusicAction(playButton);
+
+        final Button downloadButton = new Button("Download", 360, 475);
+        panel.add(downloadButton);
+        textFieldInput.downloadMusicAction(downloadButton);
     }
 }
